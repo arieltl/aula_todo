@@ -12,21 +12,26 @@ class _CreateTodoPageState extends State<CreateTodoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Create To Do"),
+        title: const Text("Create To Do"),
       ),
       body: Card(
-        margin: EdgeInsets.all(30),
+        margin: const EdgeInsets.all(30),
         color: Colors.blueGrey.shade100,
         child:  Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Padding(
-              padding: EdgeInsets.all(40.0),
-              child: Text(
-                "Todo Title:",
-                      
-              ),
-            ),
-            const Padding(
+            const Column(
+            
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(40.0),
+                  child: Text(
+                    "Todo Title:",
+                          
+                  ),
+                ),
+
+                Padding(
               padding: EdgeInsets.symmetric(horizontal: 40.0),
               child: TextField(
                 decoration: InputDecoration(
@@ -36,7 +41,13 @@ class _CreateTodoPageState extends State<CreateTodoPage> {
                 ),
               ),
             ),
-            ElevatedButton(onPressed: (){}, child: Text("Create"))
+              ],
+            ),
+            
+            Padding(
+              padding: const EdgeInsets.only(bottom:40.0),
+              child: ElevatedButton(onPressed: (){}, child: const Text("Create")),
+            )
           ],
         ),
       ),
