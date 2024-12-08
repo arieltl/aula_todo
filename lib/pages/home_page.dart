@@ -1,4 +1,5 @@
 import 'package:aula_todo/models/to_do.dart';
+import 'package:aula_todo/pages/create_todo.dart';
 import 'package:aula_todo/widgets/todo_tile.dart';
 import 'package:flutter/material.dart';
 
@@ -32,15 +33,20 @@ class _HomePageState extends State<HomePage> {
 
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context)  {
     return Scaffold(
         appBar: AppBar(
           title: Text("To Do"),
           actions: [
             IconButton(
               icon: Icon(Icons.add),
-              onPressed: (){
-                print("Add pressed");
+              onPressed: () async{
+                final result = await Navigator.of(context).push(MaterialPageRoute(builder: (context) => const CreateTodoPage()));
+                if (result is ToDo) {
+                  setState(() {
+                    toDos.add(result);
+                  });
+                }
               },
             ),
             TextButton(onPressed: (){}, child: Text("Exemplo ")),
