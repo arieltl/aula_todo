@@ -36,14 +36,30 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
         appBar: AppBar(
           title: Text("To Do"),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.add),
+              onPressed: (){
+                print("Add pressed");
+              },
+            ),
+            TextButton(onPressed: (){}, child: Text("Exemplo ")),
+          ],
         ),
         body: ListView.builder(itemBuilder: (BuildContext context, int index){
-
+          if (index == toDos.length){
+            return SizedBox(height: 80);
+          }
           return ToDoTile(toDo: toDos[index]);
            
         
 
         },
-        itemCount: toDos.length));
+        itemCount: toDos.length+1),
+        // floatingActionButton: FloatingActionButton(
+        //   onPressed: (){},
+        //   child: Text("Add"), 
+        // )
+    );
   }
 }
